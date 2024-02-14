@@ -38,5 +38,8 @@
   },
   "eslintIgnore": [
     "!.*"
-  ]
+  ],
+  "dependencies": {
+    "@aaashur/eleventy-plugin-classnames": "^0.2.0"
+  }
 }
