@@ -1,3 +1,5 @@
+const classnames = require( "@aaashur/eleventy-plugin-classnames/src/classnames" );
+
 /**
  * @typedef {boolean|number|string} AttributeValue
  */
@@ -77,6 +79,13 @@ function getAttributeString( name, value )
 	}
 	else
 	{
+		// Attributes with special handling
+		if ( name === "class" && Array.isArray( value ) && value.length > 0 )
+		{
+			value = classnames( ...value );
+		}
+
+		// All other attributes
 		if( !isTruthyish( value ) )
 		{
 			return "";

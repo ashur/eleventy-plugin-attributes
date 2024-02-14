@@ -52,7 +52,7 @@ describe( "attributes", () =>
 		/* eslint-enable quote-props */
 	} );
 
-	it.skip( "should use classnames if attribute name is 'class'", () =>
+	it( "should use classnames if attribute name is 'class'", () =>
 	{
 		assert.equal( attributes( "class", [
 			"block",
@@ -60,5 +60,7 @@ describe( "attributes", () =>
 			false && "block__element--modifier",
 			"block",
 		] ), "class=\"block block__element\"" );
+
+		assert.equal( attributes( "class", [] ), "" );
 	} );
 } );
