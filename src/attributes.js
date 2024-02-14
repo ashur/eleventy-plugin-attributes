@@ -1,4 +1,5 @@
 const classnames = require( "@aaashur/eleventy-plugin-classnames/src/classnames" );
+const styles = require( "@aaashur/eleventy-plugin-styles/src/styles" );
 
 /**
  * @typedef {boolean|number|string} AttributeValue
@@ -55,7 +56,7 @@ module.exports = ( arg1, value ) =>
 		const name = arg1;
 		return getAttributeString( name, value );
 	}
-	else if ( Object.prototype.toString.call( arg1 ) === "[object Object]" )
+	else if ( isObject( arg1 ) )
 	{
 		return Object.entries( arg1 )
 			.map( ( [name, value] ) => getAttributeString( name, value ) )
@@ -80,9 +81,14 @@ function getAttributeString( name, value )
 	else
 	{
 		// Attributes with special handling
-		if ( name === "class" && Array.isArray( value ) && value.length > 0 )
+		if ( name === "class" && Array.isArray( value ) )
 		{
-			value = classnames( ...value );
+			value = classnames( ...value ) || null; // convert `""` to `null` to force return of empty attribute string
+		}
+
+		if ( name === "style" && isObject( value ) )
+		{
+			value = styles( value ) || null; // convert `""` to `null` to force return of empty attribute string
 		}
 
 		// All other attributes
@@ -93,6 +99,15 @@ function getAttributeString( name, value )
 
 		return `${name}="${value}"`;
 	}
+}
+
+/**
+ * @param {any} value
+ * @return {boolean}
+ */
+function isObject( value )
+{
+	return Object.prototype.toString.call( value ) === "[object Object]";
 }
 
 /**

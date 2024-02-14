@@ -62,5 +62,17 @@ describe( "attributes", () =>
 		] ), "class=\"block block__element\"" );
 
 		assert.equal( attributes( "class", [] ), "" );
+		assert.equal( attributes( "class", [] ), "" );
+	} );
+
+	it( "should use styles if attribute name is 'style'", () =>
+	{
+		assert.equal( attributes( "style", {
+			"background-color": "red",
+			"--custom-property": "10px",
+			"--falsy-variable": false && "green",
+		} ), "style=\"background-color: red; --custom-property: 10px\"" );
+
+		assert.equal( attributes( "style", {} ), "" );
 	} );
 } );
