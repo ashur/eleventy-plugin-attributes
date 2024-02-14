@@ -40,6 +40,7 @@
     "!.*"
   ],
   "dependencies": {
-    "@aaashur/eleventy-plugin-classnames": "^0.2.0"
+    "@aaashur/eleventy-plugin-classnames": "^0.2.0",
+    "@aaashur/eleventy-plugin-styles": "^0.2.0"
   }
 }
