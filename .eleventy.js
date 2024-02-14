@@ -12,6 +12,4 @@ module.exports = ( eleventyConfig, options = {} ) =>
 {
 	const { shortcodeName } = options;
 	eleventyConfig.addShortcode( shortcodeName || "attributes", attributes );
-
-	eleventyConfig.addFilter( "testValue", ( value ) => console.log( { value } ) );
 };
