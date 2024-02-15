@@ -54,7 +54,7 @@ module.exports = (eleventyConfig) => {
 You might use the shortcode in a [Nunjucks template](https://www.11ty.dev/docs/languages/nunjucks/) like this:
 
 ```njk
-<div {% attributes {
+<div {%- attributes {
     "aria-disabled": false,
     async: true,
     href: undefined
@@ -72,8 +72,8 @@ The shortcode also supports a more compact single name-value format, handy when 
 ```njk
 {%- set elementId = "section-2" -%}
 
-<h2 {% attributes "id", elementId %}>Heading With ID</h2>
-<h2 {% attributes "id", undefinedVar %}>Heading Without ID</h2>
+<h2 {%- attributes "id", elementId %}>Heading With ID</h2>
+<h2 {%- attributes "id", undefinedVar %}>Heading Without ID</h2>
 ```
 
 ```html
@@ -127,7 +127,7 @@ aria-disabled="false" async
 If an attribute is named `class` and its value is an array, [`classnames`](https://www.npmjs.com/package/@aaashur/eleventy-plugin-classnames) will be used automatically to return a space-delimited string containing only truthy, non-duplicate values:
 
 ```njk
-<div {% attributes {
+<div {%- attributes {
     class: [
         "block",
         "block__element",
@@ -150,7 +150,7 @@ If an attribute is named `class` and its value is an array, [`classnames`](https
 If an attribute is named `style` and its value is an object, [`styles`](https://www.npmjs.com/package/@aaashur/eleventy-plugin-styles) will be used automatically to return a semicolon-delimited string containing only truthy values:
 
 ```njk
-<div {% attributes {
+<div {%- attributes {
     style: {
         "--custom-property": "10px",
         "--false-property": false,
@@ -158,7 +158,7 @@ If an attribute is named `style` and its value is an object, [`styles`](https://
         "--undefined-property": undefined,
         "background-color": "red"
     }
-} %}
+} %}>
     <p>Hello, world.</p>
 </div>
 ```

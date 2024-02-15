@@ -61,7 +61,7 @@ module.exports = ( arg1, value ) =>
 		return Object.entries( arg1 )
 			.map( ( [name, value] ) => getAttributeString( name, value ) )
 			.filter( ( element ) => element )
-			.join( " " );
+			.join( "" );
 	}
 
 	return "";
@@ -76,7 +76,7 @@ function getAttributeString( name, value )
 {
 	if( booleanAttributes.includes( name ) )
 	{
-		return value ? name : "";
+		return value ? ` ${name}` : "";
 	}
 	else
 	{
@@ -97,7 +97,7 @@ function getAttributeString( name, value )
 			return "";
 		}
 
-		return `${name}="${value}"`;
+		return ` ${name}="${value}"`;
 	}
 }
 

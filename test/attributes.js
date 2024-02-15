@@ -15,12 +15,12 @@ describe( "attributes", () =>
 
 	it( "should return a single-attribute string if the first argument is a string", () =>
 	{
-		assert.equal( attributes( "aria-disabled", false ), "aria-disabled=\"false\"" );
+		assert.equal( attributes( "aria-disabled", false ), " aria-disabled=\"false\"" );
 		assert.equal( attributes( "data-empty-value", [] ), "" );
 		assert.equal( attributes( "data-null-value", null ), "" );
 		assert.equal( attributes( "data-undefined-value", undefined ), "" );
-		assert.equal( attributes( "height", 0 ), "height=\"0\"" );
-		assert.equal( attributes( "href", "https://example.com" ), "href=\"https://example.com\"" );
+		assert.equal( attributes( "height", 0 ), " height=\"0\"" );
+		assert.equal( attributes( "href", "https://example.com" ), " href=\"https://example.com\"" );
 	} );
 
 	it( "should return a space-delimited attribute string if the first argument is an object", () =>
@@ -33,14 +33,14 @@ describe( "attributes", () =>
 			"data-null-value": null,
 			"data-undefined-value": undefined,
 			"href": "https://example.com",
-		} ), "alt=\"\" aria-disabled=\"false\" href=\"https://example.com\"" );
+		} ), " alt=\"\" aria-disabled=\"false\" href=\"https://example.com\"" );
 		/* eslint-enable quote-props */
 	} );
 
 	it( "should return valid strings for boolean attributes", () =>
 	{
 		assert.equal( attributes( "allowfullscreen", false ), "" );
-		assert.equal( attributes( "allowfullscreen", true ), "allowfullscreen" );
+		assert.equal( attributes( "allowfullscreen", true ), " allowfullscreen" );
 
 		/* eslint-disable quote-props */
 		assert.equal( attributes( {
@@ -48,7 +48,7 @@ describe( "attributes", () =>
 			"async": false,
 			"class": "classString", // Not a boolean attribute :)
 			"disabled": "true",
-		} ), "allowfullscreen class=\"classString\" disabled" );
+		} ), " allowfullscreen class=\"classString\" disabled" );
 		/* eslint-enable quote-props */
 	} );
 
@@ -59,7 +59,7 @@ describe( "attributes", () =>
 			"block__element",
 			false && "block__element--modifier",
 			"block",
-		] ), "class=\"block block__element\"" );
+		] ), " class=\"block block__element\"" );
 
 		assert.equal( attributes( "class", [] ), "" );
 		assert.equal( attributes( "class", [] ), "" );
@@ -71,7 +71,7 @@ describe( "attributes", () =>
 			"background-color": "red",
 			"--custom-property": "10px",
 			"--falsy-variable": false && "green",
-		} ), "style=\"background-color: red; --custom-property: 10px\"" );
+		} ), " style=\"background-color: red; --custom-property: 10px\"" );
 
 		assert.equal( attributes( "style", {} ), "" );
 	} );
