@@ -1,6 +1,6 @@
 {
   "name": "@aaashur/eleventy-plugin-attributes",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "description": "An Eleventy plugin for converting truthy object values into an HTML element attributes string",
   "main": ".eleventy.js",
   "scripts": {
