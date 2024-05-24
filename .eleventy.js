@@ -1,10 +1,8 @@
 const attributes = require( "./src/attributes" );
 
-/* eslint-disable-next-line no-unused-vars */
-const UserConfig = require( "@11ty/eleventy/src/UserConfig" );
-
+/* eslint-disable-next-line valid-jsdoc */
 /**
- * @param {UserConfig} eleventyConfig
+ * @param {import("@11ty/eleventy/src/UserConfig")} eleventyConfig
  * @param {Object} options
  * @param {string} [options.shortcodeName] - ex., "attr"
  */
