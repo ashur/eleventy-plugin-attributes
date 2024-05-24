@@ -24,7 +24,7 @@ alt="" aria-disabled="false" async
 Run the following command at the root of your Eleventy project
 
 ```shell
-npm install @aaashur/eleventy-plugin-attributes
+npm install ashur/eleventy-plugin-attributes#semver:^v1.0.0-beta.2
 ```
 
 then include it in your `.eleventy.js` config file:
